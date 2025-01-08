@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CPP_ItemEnum.h"
 #include "GameFramework/Actor.h"
 #include "CPP_PickUp.generated.h"
 
@@ -17,7 +18,7 @@ private:
 	TObjectPtr<UStaticMeshComponent> _mesh;
 
 	UPROPERTY(EditAnywhere, Category = Num)
-	int32 _item_num;
+	ECPP_ItemEnum _item_num;
 
 	UPROPERTY(EditAnywhere, Category = Bool)
 	bool _is_food;
@@ -34,6 +35,6 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	int32 getItemNum()const;
+	ECPP_ItemEnum getItemType()const;
 	bool getIsFood()const;
 };

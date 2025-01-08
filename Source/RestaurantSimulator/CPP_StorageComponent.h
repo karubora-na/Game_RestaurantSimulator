@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "CPP_ItemStrage.h"
+#include "CPP_ItemEnum.h"
 #include "CPP_StorageComponent.generated.h"
 
 #define MAX_STORAGE_RANGE 4
@@ -28,7 +29,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
-	bool saveItem(int32 item_num, bool is_food);
+	bool saveItem(ECPP_ItemEnum item_num, bool is_food);
 
 
 };

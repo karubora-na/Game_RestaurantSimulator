@@ -5,10 +5,14 @@
 #include "CoreMinimal.h"
 #include "CPP_ItemEnum.generated.h"
 /**
- * 
+ *
  */
 UENUM(BlueprintType)
 enum class ECPP_ItemEnum : uint8 {
 
-	CAN
+	NONE = 0,
+	TUNA,
+	RICE,
+	LAVER,
+	TUNA_RICE_BALL
 };

@@ -91,7 +91,7 @@ void ACPP_PlayerCharacter::haveItem() {
 
 	TObjectPtr<ACPP_PickUp> hit_item = Cast<ACPP_PickUp>(_selecting_actor);
 
-	int32 num = hit_item->getItemNum();
+	ECPP_ItemEnum num = hit_item->getItemType();
 	bool is_food = hit_item->getIsFood();
 
 	UE_LOG(LogTemp, Log, TEXT("Item Num:%d Is Food:%s"), num, is_food ? TEXT("true") : TEXT("false"));

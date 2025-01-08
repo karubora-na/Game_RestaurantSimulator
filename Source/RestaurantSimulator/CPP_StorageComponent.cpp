@@ -2,14 +2,14 @@
 
 
 #include "CPP_StorageComponent.h"
-
+#include "CPP_ItemEnum.h"
 
 UCPP_StorageComponent::UCPP_StorageComponent()
 {
 	for (int idx = 0; idx < MAX_STORAGE_RANGE; idx++) {
 
 		_item_storage[idx]._is_valid = false;
-		_item_storage[idx]._item_num = 0;
+		_item_storage[idx]._item_num = ECPP_ItemEnum::NONE;
 		_item_storage[idx]._is_food = false;
 	}
 }
@@ -24,7 +24,7 @@ void UCPP_StorageComponent::BeginPlay()
 
 }
 
-bool UCPP_StorageComponent::saveItem(int32 item_num, bool is_food) {
+bool UCPP_StorageComponent::saveItem(ECPP_ItemEnum item_num, bool is_food) {
 
 	for (int idx = 0; idx < MAX_STORAGE_RANGE; idx++) {
 		if (!_item_storage[idx]._is_valid) {

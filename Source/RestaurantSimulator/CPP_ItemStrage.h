@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "CPP_ItemEnum.h"
 #include "CPP_ItemStrage.generated.h"
 
 /**
@@ -15,7 +16,7 @@ public:
 
 	bool _is_valid;
 
-	int32 _item_num;
+	ECPP_ItemEnum _item_num;
 
 	bool _is_food;
 };

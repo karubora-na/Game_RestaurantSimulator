@@ -2,6 +2,7 @@
 
 
 #include "CPP_PickUp.h"
+#include "CPP_ItemEnum.h"
 
 // Sets default values
 ACPP_PickUp::ACPP_PickUp()
@@ -9,7 +10,7 @@ ACPP_PickUp::ACPP_PickUp()
 	_mesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Mesh"));
 	_mesh->SetupAttachment(RootComponent);
 
-	_item_num = 0;
+	_item_num = ECPP_ItemEnum::NONE;
 
 	_is_food = false;
 }
@@ -28,7 +29,7 @@ void ACPP_PickUp::Tick(float DeltaTime)
 
 }
 
-int32 ACPP_PickUp::getItemNum() const{
+ECPP_ItemEnum ACPP_PickUp::getItemType() const{
 	return _item_num;
 }
 
