@@ -8,7 +8,7 @@
 #include "CPP_ItemEnum.h"
 #include "CPP_StorageComponent.generated.h"
 
-#define MAX_STORAGE_RANGE 4
+#define MAX_STORAGE_RANGE 3
 
 UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 class RESTAURANTSIMULATOR_API UCPP_StorageComponent : public UActorComponent
@@ -29,7 +29,8 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+
 	bool saveItem(ECPP_ItemEnum item_num, bool is_food);
-
-
+	void getItemNum(ECPP_ItemEnum* array);
+	
 };

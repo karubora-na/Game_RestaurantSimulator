@@ -20,7 +20,15 @@ void UCPP_StorageComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-
+	_item_storage[0]._is_valid = true;
+	_item_storage[0]._item_num = ECPP_ItemEnum::NONE;
+	_item_storage[0]._is_food = false;
+	_item_storage[1]._is_valid = true;
+	_item_storage[1]._item_num = ECPP_ItemEnum::LAVER;
+	_item_storage[1]._is_food = false;
+	_item_storage[2]._is_valid = true;
+	_item_storage[2]._item_num = ECPP_ItemEnum::TUNA;
+	_item_storage[2]._is_food = false;
 
 }
 
@@ -38,4 +46,12 @@ bool UCPP_StorageComponent::saveItem(ECPP_ItemEnum item_num, bool is_food) {
 		}
 	}
 	return false;
+}
+
+void UCPP_StorageComponent::getItemNum(ECPP_ItemEnum* array) {
+
+	for (int i = 0; i < MAX_STORAGE_RANGE; i++) {
+
+		array[i] = _item_storage[i]._item_num;
+	}
 }

@@ -51,7 +51,10 @@ private:
 public:
 
 	ACPP_PlayerCharacter();
+	virtual void Tick(float DeltaTime) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	TObjectPtr<UCPP_StorageComponent> getStorageComponent();
 protected:
 	
 	virtual void BeginPlay() override;
@@ -61,11 +64,5 @@ protected:
 
 	void haveItem();
 	TObjectPtr<AActor> searchItem();
-
-public:
 	
-	virtual void Tick(float DeltaTime) override;
-
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
-
 };

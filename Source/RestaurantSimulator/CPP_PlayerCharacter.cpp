@@ -60,6 +60,7 @@ void ACPP_PlayerCharacter::Tick(float DeltaTime) {
 	_selecting_actor = searchItem();
 }
 
+// 前後左右移動
 void ACPP_PlayerCharacter::Move(const FInputActionValue& Value) {
 
 	FVector2D move_vector = Value.Get<FVector2D>();
@@ -71,6 +72,7 @@ void ACPP_PlayerCharacter::Move(const FInputActionValue& Value) {
 	}
 }
 
+// カメラの回転
 void ACPP_PlayerCharacter::Look(const FInputActionValue& Value) {
 
 	FVector2D look_vector = Value.Get<FVector2D>();
@@ -82,6 +84,7 @@ void ACPP_PlayerCharacter::Look(const FInputActionValue& Value) {
 	}
 }
 
+// 画面中央のアクタを取得する
 void ACPP_PlayerCharacter::haveItem() {
 
 	if (!_selecting_actor) {
@@ -123,4 +126,9 @@ TObjectPtr<AActor> ACPP_PlayerCharacter::searchItem() {
 	}
 
 	return hit_result.GetActor();
+}
+
+TObjectPtr<UCPP_StorageComponent> ACPP_PlayerCharacter::getStorageComponent() {
+
+	return _storage_component;
 }
