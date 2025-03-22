@@ -29,14 +29,12 @@ struct FCPP_KeyStruct {
 		:_first_key(first), _second_key(second), _third_key(third) {
 	}
 
-
 	bool operator==(const FCPP_KeyStruct& other) const {
 
 		return _first_key == other._first_key &&
 			_second_key == other._second_key &&
 			_third_key == other._third_key;
 	}
-
 };
 
 FORCEINLINE uint32 GetTypeHash(const FCPP_KeyStruct& Key) {

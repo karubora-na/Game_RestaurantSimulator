@@ -20,15 +20,16 @@ void UCPP_StorageComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	_item_storage[0]._is_valid = true;
-	_item_storage[0]._item_num = ECPP_ItemEnum::NONE;
+	// CookPlaceのテスト用
+	/*_item_storage[0]._is_valid = true;
+	_item_storage[0]._item_num = ECPP_ItemEnum::RICE;
 	_item_storage[0]._is_food = false;
 	_item_storage[1]._is_valid = true;
 	_item_storage[1]._item_num = ECPP_ItemEnum::LAVER;
 	_item_storage[1]._is_food = false;
 	_item_storage[2]._is_valid = true;
 	_item_storage[2]._item_num = ECPP_ItemEnum::TUNA;
-	_item_storage[2]._is_food = false;
+	_item_storage[2]._is_food = false;*/
 
 }
 
