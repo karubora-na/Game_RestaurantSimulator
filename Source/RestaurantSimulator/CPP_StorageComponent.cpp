@@ -3,6 +3,7 @@
 
 #include "CPP_StorageComponent.h"
 #include "CPP_ItemEnum.h"
+#include "CPP_FunctionLibrary.h"
 
 UCPP_StorageComponent::UCPP_StorageComponent()
 {
@@ -20,17 +21,6 @@ void UCPP_StorageComponent::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// CookPlaceのテスト用
-	/*_item_storage[0]._is_valid = true;
-	_item_storage[0]._item_num = ECPP_ItemEnum::RICE;
-	_item_storage[0]._is_food = false;
-	_item_storage[1]._is_valid = true;
-	_item_storage[1]._item_num = ECPP_ItemEnum::LAVER;
-	_item_storage[1]._is_food = false;
-	_item_storage[2]._is_valid = true;
-	_item_storage[2]._item_num = ECPP_ItemEnum::TUNA;
-	_item_storage[2]._is_food = false;*/
-
 }
 
 bool UCPP_StorageComponent::saveItem(ECPP_ItemEnum item_num, bool is_food) {
@@ -41,8 +31,11 @@ bool UCPP_StorageComponent::saveItem(ECPP_ItemEnum item_num, bool is_food) {
 			_item_storage[idx]._is_valid = true;
 			_item_storage[idx]._item_num = item_num;
 			_item_storage[idx]._is_food = is_food;
+			CPP_FunctionLibrary::outputString(
+				GetWorld(),
+				FString::Printf(TEXT("Storage_idx[%d] ItemNum:%d Is_Food:%s"), idx, (int)item_num, is_food ? TEXT("true") : TEXT("false"))
+			);
 
-			UE_LOG(LogTemp, Log, TEXT("Storage_idx[%d] ItemNum:%d Is_Food:%s"),idx,item_num,is_food ? TEXT("true"):TEXT("false"));
 			return true;
 		}
 	}

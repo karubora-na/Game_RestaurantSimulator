@@ -54,7 +54,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	TObjectPtr<UCPP_StorageComponent> getStorageComponent();
+	TObjectPtr<UCPP_StorageComponent> getStorageComponent()const;
 protected:
 	
 	virtual void BeginPlay() override;

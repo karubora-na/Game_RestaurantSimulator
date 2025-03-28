@@ -11,8 +11,8 @@ UENUM(BlueprintType)
 enum class ECPP_ItemEnum : uint8 {
 
 	NONE = 0,
-	TUNA,
+	SALMON,
 	RICE,
 	LAVER,
-	TUNA_RICE_BALL
+	SALMON_RICE_BALL
 };

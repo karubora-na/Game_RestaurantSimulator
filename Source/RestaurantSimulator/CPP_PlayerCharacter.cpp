@@ -3,6 +3,7 @@
 
 #include "CPP_PlayerCharacter.h"
 #include "CPPParameter.h"
+#include "CPP_FunctionLibrary.h"
 #include <Components/CapsuleComponent.h>
 #include <EnhancedInputComponent.h>
 
@@ -80,7 +81,7 @@ void ACPP_PlayerCharacter::Look(const FInputActionValue& Value) {
 	if (Controller != nullptr) {
 
 		AddControllerYawInput(look_vector.X);
-		AddControllerPitchInput(look_vector.Y);
+		AddControllerPitchInput(look_vector.Y * -1);
 	}
 }
 
@@ -88,18 +89,28 @@ void ACPP_PlayerCharacter::Look(const FInputActionValue& Value) {
 void ACPP_PlayerCharacter::haveItem() {
 
 	if (!_selecting_actor) {
-		UE_LOG(LogTemp, Log, TEXT("SelectingActor:%s"), _selecting_actor ? TEXT("true") : TEXT("false"));
 		return;
 	}
+	CPP_FunctionLibrary::outputString(
+		GetWorld(),
+		FString::Printf(TEXT("SelectingActor:%s"), _selecting_actor ? TEXT("true") : TEXT("false"))
+		);
 
 	TObjectPtr<ACPP_PickUp> hit_item = Cast<ACPP_PickUp>(_selecting_actor);
 
-	ECPP_ItemEnum num = hit_item->getItemType();
-	bool is_food = hit_item->getIsFood();
-
-	UE_LOG(LogTemp, Log, TEXT("Item Num:%d Is Food:%s"), num, is_food ? TEXT("true") : TEXT("false"));
-
 	if (hit_item) {
+
+		ECPP_ItemEnum num = hit_item->getItemType();
+		bool is_food = hit_item->getIsFood();
+
+		CPP_FunctionLibrary::outputString(
+			GetWorld(),
+			FString::Printf(
+					TEXT("Item Num:%d Is Food:%s"),
+					(int)num,
+					is_food ? TEXT("true") : TEXT("false"))
+		);
+
 		// AC_ストレージに保存する
 		_storage_component->saveItem(num, is_food);
 	}
@@ -118,6 +129,7 @@ TObjectPtr<AActor> ACPP_PlayerCharacter::searchItem() {
 	FVector end = start + _camera_component->GetForwardVector() * ITEM_SEARCH_CAN_DISTANCE;
 	ECollisionChannel trace_channel = ECC_Visibility;
 
+
 	is_hit = _world->LineTraceSingleByChannel(hit_result, start, end, trace_channel);
 	/*ライントレースのラインの可視化*/DrawDebugLine(_world, start, end, FColor::Red, false, 0.1f, 0, 1.0f);
 
@@ -128,7 +140,7 @@ TObjectPtr<AActor> ACPP_PlayerCharacter::searchItem() {
 	return hit_result.GetActor();
 }
 
-TObjectPtr<UCPP_StorageComponent> ACPP_PlayerCharacter::getStorageComponent() {
+TObjectPtr<UCPP_StorageComponent> ACPP_PlayerCharacter::getStorageComponent() const {
 
 	return _storage_component;
 }

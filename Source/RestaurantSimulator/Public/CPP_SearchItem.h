@@ -27,9 +27,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
-	ECPP_ItemEnum searchItem(ECPP_ItemEnum item1, ECPP_ItemEnum item2, ECPP_ItemEnum item3);
+	ECPP_ItemEnum searchItem(ECPP_ItemEnum item0, ECPP_ItemEnum item1, ECPP_ItemEnum item2);
 private:
 
-	void addRecipes(ECPP_ItemEnum food,ECPP_ItemEnum item1, ECPP_ItemEnum item2, ECPP_ItemEnum item3);
+	void addRecipes(ECPP_ItemEnum food,ECPP_ItemEnum item0, ECPP_ItemEnum item1, ECPP_ItemEnum item2);
 	bool sortByIncreasing(int* array, int key1, int key2, int key3);
 };

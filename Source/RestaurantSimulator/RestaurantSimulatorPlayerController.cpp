@@ -15,5 +15,6 @@ void ARestaurantSimulatorPlayerController::BeginPlay()
 		Subsystem->AddMappingContext(InputMappingContext, 0);
 
 		UE_LOG(LogTemp, Warning, TEXT("BeginPlay"));
+
 	}
 }
